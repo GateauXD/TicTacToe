@@ -18,6 +18,8 @@ string spot7 = "7";
 string spot8 = "8";
 string spot9 = "9";
 
+int playerTurn = 1;
+
 bool gameOver() {
 	if (spot1 == spot2 && spot2 == spot3)
 		return true;
@@ -101,11 +103,21 @@ int main()
 
 		drawTable();
 
+		if (gameOver() == true) {
+			cout << "Player 1 is the winner!" << endl;
+			break;
+		}
+
 		cout << "Player 2 it's your turn" << endl;
 		cin >> p2;
 		changeSpot(p2, "O");
 
 		drawTable();
+
+		if (gameOver() == true) {
+			cout << "PLayer 1 is the winner!" << endl;
+			break;
+		}
 
 	}
 
