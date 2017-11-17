@@ -71,6 +71,7 @@ void changeSpot(int value, string letter) {
 	}
 	else {
 		cout << "The spot you entered does not exit or already has already been taken" << endl;
+		playerTurn--;
 	}
 }
 
@@ -85,6 +86,8 @@ void drawTable() {
 	cout << "-----------------" << endl;
 	cout << "  " << spot7 << "  |  " << spot8 << "  |  " << spot9 << "  " << endl;
 
+	cout << "====================================================" << endl;
+
 }
 
 int main()
@@ -95,33 +98,41 @@ int main()
 	int p1, p2;
 
 	while (true) {
+		if (playerTurn % 2 == 1) {
+			cout << "Player 1 it's your turn" << endl;
+			cin >> p1;
 
-		cout << "Player 1 it's your turn" << endl;
-		cin >> p1;
-		
-		changeSpot(p1, "X");
+			changeSpot(p1, "X");
 
-		drawTable();
+			drawTable();
 
-		if (gameOver() == true) {
-			cout << "Player 1 is the winner!" << endl;
-			break;
+			if (gameOver() == true) {
+				cout << endl << endl << endl;
+				cout << "Player 1 is the winner!" << endl;
+				cout << endl << endl;
+				break;
+			}
+			playerTurn++;
+
 		}
 
-		cout << "Player 2 it's your turn" << endl;
-		cin >> p2;
-		changeSpot(p2, "O");
+		if (playerTurn % 2 == 0) {
+			cout << "Player 2 it's your turn" << endl;
+			cin >> p2;
+			changeSpot(p2, "O");
 
-		drawTable();
+			drawTable();
 
-		if (gameOver() == true) {
-			cout << "PLayer 1 is the winner!" << endl;
-			break;
+			if (gameOver() == true) {
+				cout << endl << endl;
+				cout << "PLayer 1 is the winner!" << endl;
+				cout << endl << endl;
+				break;
+			}
+			playerTurn++;
 		}
 
 	}
-
 	return 0;
 
 }
-
