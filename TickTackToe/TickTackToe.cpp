@@ -1,5 +1,3 @@
-// TicTacToe.cpp : Defines the entry point for the console application.
-//
 
 #include "stdafx.h"
 #include <iostream>
@@ -20,25 +18,27 @@ string spot9 = "9";
 
 int playerTurn = 1;
 
-bool gameOver() {
+int gameOver() {
 	if (spot1 == spot2 && spot2 == spot3)
-		return true;
+		return 1;
 	else if (spot4 == spot5 && spot5 == spot6)
-		return true;
+		return 1;
 	else if (spot6 == spot7 && spot8 == spot9)
-		return true;
+		return 1;
 	else if (spot1 == spot4 && spot4 == spot7)
-		return true;
+		return 1;
 	else if (spot2 == spot5 && spot5 == spot8)
-		return true;
+		return 1;
 	else if (spot3 == spot6 && spot6 == spot9)
-		return true;
+		return 1;
 	else if (spot1 == spot5 && spot5 == spot9)
-		return true;
+		return 1;
 	else if (spot3 == spot5 && spot5 == spot7)
-		return true;
+		return 1;
+	else if (spot1 != "1" && spot2 != "2" && spot3 != "3" && spot4 != "4" && spot5 != "5" && spot6 != "6" && spot7 != "7" && spot8 != "8" && spot9 != "9")
+		return 2;
 	else
-		return false;
+		return 0;
 }
 
 void changeSpot(int value, string letter) {
@@ -106,9 +106,15 @@ int main()
 
 			drawTable();
 
-			if (gameOver() == true) {
+			if (gameOver() == 1) {
 				cout << endl << endl << endl;
 				cout << "Player 1 is the winner!" << endl;
+				cout << endl << endl;
+				break;
+			}
+			else if (gameOver() == 2) {
+				cout << endl << endl << endl;
+				cout << "It's a Tie! No winner" << endl;
 				cout << endl << endl;
 				break;
 			}
@@ -123,9 +129,15 @@ int main()
 
 			drawTable();
 
-			if (gameOver() == true) {
+			if (gameOver() == 1) {
 				cout << endl << endl;
 				cout << "PLayer 1 is the winner!" << endl;
+				cout << endl << endl;
+				break;
+			}
+			else if (gameOver() == 2) {
+				cout << endl << endl << endl;
+				cout << "It's a Tie! No winner" << endl;
 				cout << endl << endl;
 				break;
 			}
