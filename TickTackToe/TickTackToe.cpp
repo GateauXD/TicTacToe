@@ -20,15 +20,15 @@ string spot9 = "9";
 int playerTurn = 1;
 
 void clearTable() {
-	string spot1 = "1";
-	string spot2 = "2";
-	string spot3 = "3";
-	string spot4 = "4";
-	string spot5 = "5";
-	string spot6 = "6";
-	string spot7 = "7";
-	string spot8 = "8";
-	string spot9 = "9";
+	spot1 = "1";
+	spot2 = "2";
+	spot3 = "3";
+	spot4 = "4";
+	spot5 = "5";
+	spot6 = "6";
+	spot7 = "7";
+	spot8 = "8";
+	spot9 = "9";
 }
 
 int gameOver() {
