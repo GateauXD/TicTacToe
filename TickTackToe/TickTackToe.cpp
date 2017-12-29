@@ -1,6 +1,7 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include "conio.h"
 #include <string>
 
 using namespace std;
@@ -17,6 +18,18 @@ string spot8 = "8";
 string spot9 = "9";
 
 int playerTurn = 1;
+
+void clearTable() {
+	spot1 = "1";
+	spot2 = "2";
+	spot3 = "3";
+	spot4 = "4";
+	spot5 = "5";
+	spot6 = "6";
+	spot7 = "7";
+	spot8 = "8";
+	spot9 = "9";
+}
 
 int gameOver() {
 	if (spot1 == spot2 && spot2 == spot3)
@@ -90,9 +103,7 @@ void drawTable() {
 
 }
 
-int main()
-{
-
+int playGame() {
 	drawTable();
 
 	int p1, p2;
@@ -110,13 +121,13 @@ int main()
 				cout << endl << endl << endl;
 				cout << "Player 1 is the winner!" << endl;
 				cout << endl << endl;
-				break;
+				return 1;
 			}
 			else if (gameOver() == 2) {
 				cout << endl << endl << endl;
 				cout << "It's a Tie! No winner" << endl;
 				cout << endl << endl;
-				break;
+				return 0;
 			}
 			playerTurn++;
 
@@ -131,20 +142,63 @@ int main()
 
 			if (gameOver() == 1) {
 				cout << endl << endl;
-				cout << "PLayer 1 is the winner!" << endl;
+				cout << "PLayer 2 is the winner!" << endl;
 				cout << endl << endl;
-				break;
+				return 2;
 			}
 			else if (gameOver() == 2) {
 				cout << endl << endl << endl;
 				cout << "It's a Tie! No winner" << endl;
 				cout << endl << endl;
-				break;
+				return 0;
 			}
 			playerTurn++;
 		}
 
 	}
+}
+
+int main()
+{
+	char gameContinue = '0';
+	int p1W = 0, p2W = 0, ties = 0;
+	cout << "\n";
+	cout << "\t**------------------------------------------------**" << "\n";
+	cout << "\t||          Welcome to the Game of Tic Tac        ||" << "\n";
+	cout << "\t**------------------------------------------------**" << "\n" << "\n";
+
+	while (gameContinue != 'q') {
+		clearTable();
+
+		int whoWon = playGame();
+
+
+		switch (whoWon) {
+		case 1:
+			p1W++;
+			break;
+		case 2:
+			p2W++;
+			break;
+		case 0:
+			ties++;
+			break;
+		}
+
+		cout << "Player 1 has " << p1W << " number of wins." << endl;
+		cout << "Player 2 has " << p2W << " number of wins." << endl;
+		cout << "There has been " << ties << " number of ties." << endl << endl;
+			
+		cout << "If you would like to quit enter q" << endl;
+		cout << "Enter anything else to continue playing" << endl;
+		cin >> gameContinue;
+	}
+
+
+	cout << "\n";
+	cout << "\t**------------------------------------------------**" << "\n";
+	cout << "\t||               Thank you for playing            ||" << "\n";
+	cout << "\t**------------------------------------------------**" << "\n" << "\n";
 	return 0;
 
 }
