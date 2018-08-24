@@ -1,11 +1,8 @@
 # TicTacToe
-A simple text based game
+The classic game of tic tac toe in two ways.
 
-* Program Startup
-![alt text](https://i.imgur.com/yDO8pUK.png)
-* Game Finished Screen
-![alt text](https://i.imgur.com/zW1gXgE.png)
-* Exit Screen 
-![alt text](https://i.imgur.com/RYhxje8.png)
+## Two versions:
+* A terminal based game coded in C++
+* A UI based game coded in C++ using OPENGL 
 
 ## Thank you for visiting
